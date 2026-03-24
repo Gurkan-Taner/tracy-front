@@ -44,7 +44,7 @@ function CustomCursor() {
   return (
     <>
       <motion.div
-        className="pointer-events-none fixed z-[999] rounded-full border border-[#4e9ad0] mix-blend-difference hidden md:block"
+        className="pointer-events-none fixed z-999 rounded-full border border-[#4e9ad0] mix-blend-difference hidden md:block"
         style={{
           left: springX,
           top: springY,
@@ -65,7 +65,7 @@ function ScanLine() {
   return (
     <motion.div
       aria-hidden
-      className="pointer-events-none fixed left-0 right-0 z-[100] h-px bg-gradient-to-r from-transparent via-[#4e9ad0]/30 to-transparent"
+      className="pointer-events-none fixed left-0 right-0 z-100 h-px bg-linear-to-r from-transparent via-[#4e9ad0]/30 to-transparent"
       animate={{ top: ["0%", "100%"] }}
       transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
     />
@@ -215,7 +215,7 @@ function LiveTerminal() {
           </span>
         </div>
       </div>
-      <div className="p-5 font-mono text-[13px] leading-7 min-h-[260px]">
+      <div className="p-5 font-mono text-[13px] leading-7 min-h-65">
         {lines.slice(0, visible).map((l, i) => (
           <motion.div
             key={i}
@@ -259,7 +259,7 @@ function Navbar() {
       transition={{ duration: 1 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "bg-[#19222a]/90 backdrop-blur-2xl border-b border-[#235789]/20" : ""}`}
     >
-      <div className="mx-auto flex max-w-[1400px] items-center justify-between px-8 py-5">
+      <div className="mx-auto flex max-w-350 items-center justify-between px-8 py-5">
         <a href="#" className="flex items-center gap-3">
           <svg viewBox="0 0 36 36" fill="none" className="h-9 w-9">
             <polygon
@@ -313,7 +313,7 @@ function Navbar() {
           >
             ⬡
           </motion.span>
-          Deploy now
+          Log in
         </a>
         <button
           onClick={() => setOpen(!open)}
@@ -379,11 +379,11 @@ function Hero() {
             backgroundSize: "100% 4px",
           }}
         />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[900px] w-[900px] rounded-full bg-[#204162]/20 blur-[160px]" />
-        <div className="absolute top-0 right-0 h-[500px] w-[500px] bg-[#235789]/10 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-225 w-225 rounded-full bg-[#204162]/20 blur-[160px]" />
+        <div className="absolute top-0 right-0 h-125 w-125 bg-[#235789]/10 blur-[120px]" />
       </motion.div>
 
-      <div className="relative z-10 mx-auto w-full max-w-[1400px] px-8 pt-32 pb-28">
+      <div className="relative z-10 mx-auto w-full max-w-350 px-8 pt-32 pb-28">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-16 items-center">
           {/* LEFT */}
           <motion.div style={{ y: titleY }} className="flex flex-col gap-0">
@@ -606,7 +606,7 @@ function Features() {
       className="relative bg-[#19222a] py-32 overflow-hidden"
     >
       <HexGrid />
-      <div ref={ref} className="relative z-10 mx-auto max-w-[1400px] px-8">
+      <div ref={ref} className="relative z-10 mx-auto max-w-350 px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -646,11 +646,11 @@ function Features() {
                 delay: i * 0.07,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className={`group relative border border-[#235789]/25 bg-[#1b2c3c]/50 hover:border-[#235789]/60 p-8 transition-all duration-500 overflow-hidden ${cell.span} ${i === 0 ? "border-[#4e9ad0]/30 bg-gradient-to-br from-[#204162]/70 to-[#1b2c3c]" : ""}`}
+              className={`group relative border border-[#235789]/25 bg-[#1b2c3c]/50 hover:border-[#235789]/60 p-8 transition-all duration-500 overflow-hidden ${cell.span} ${i === 0 ? "border-[#4e9ad0]/30 bg-linear-to-br from-[#204162]/70 to-[#1b2c3c]" : ""}`}
             >
               <div className="absolute top-0 right-0 h-8 w-8 overflow-hidden">
                 <div
-                  className={`absolute top-0 right-0 h-0 w-0 border-t-[32px] border-r-[32px] ${i === 0 ? "border-t-[#4e9ad0]/25 border-r-transparent" : "border-t-[#235789]/15 border-r-transparent"}`}
+                  className={`absolute top-0 right-0 h-0 w-0 border-t-32 border-r-32 ${i === 0 ? "border-t-[#4e9ad0]/25 border-r-transparent" : "border-t-[#235789]/15 border-r-transparent"}`}
                 />
               </div>
               <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-[#4e9ad0]/55 mb-4 block">
@@ -670,7 +670,7 @@ function Features() {
                   $ {cell.code}
                 </div>
               )}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4e9ad0]/0 group-hover:from-[#4e9ad0]/4 to-transparent transition-all duration-500 pointer-events-none" />
+              <div className="absolute inset-0 bg-linear-to-br from-[#4e9ad0]/0 group-hover:from-[#4e9ad0]/4 to-transparent transition-all duration-500 pointer-events-none" />
             </motion.div>
           ))}
         </div>
@@ -710,7 +710,7 @@ function Protocol() {
       id="protocol"
       className="relative bg-[#1b2c3c] py-32 overflow-hidden"
     >
-      <div className="mx-auto max-w-[1400px] px-8">
+      <div className="mx-auto max-w-350 px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -725,7 +725,7 @@ function Protocol() {
         </motion.div>
 
         <div className="flex flex-col divide-y divide-[#235789]/20">
-          {steps.map((s, i) => (
+          {steps.map((s) => (
             <motion.div
               key={s.n}
               initial={{ opacity: 0 }}
@@ -807,7 +807,7 @@ function Security() {
         </span>
       </motion.div>
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-8">
+      <div className="relative z-10 mx-auto max-w-350 px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <motion.div
             initial={{ opacity: 0, x: -40 }}
@@ -833,9 +833,9 @@ function Security() {
               CONFIDENT.
             </h2>
             <p className="text-[#f2f2f2]/40 leading-relaxed max-w-md">
-              Security in Tracy isn't a feature layer — it's the foundation
+              Security in Tracy isn&apos;t a feature layer — it&apos;s the foundation
               every decision is built on. When your data never leaves your
-              server, you don't need to trust us.
+              server, you don&apos;t need to trust us.
             </p>
           </motion.div>
 
@@ -935,7 +935,7 @@ function Testimonials() {
   ];
   return (
     <section className="relative bg-[#1b2c3c] py-32 overflow-hidden">
-      <div className="mx-auto max-w-[1400px] px-8">
+      <div className="mx-auto max-w-350 px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -982,10 +982,10 @@ function Testimonials() {
                   ))}
               </div>
               <blockquote className="text-[#f2f2f2]/55 text-base leading-relaxed flex-1">
-                "{q.q}"
+                &quot;{q.q}&quot;
               </blockquote>
               <div className="flex items-center gap-3 border-t border-[#235789]/20 pt-5">
-                <div className="flex h-9 w-9 items-center justify-center bg-gradient-to-br from-[#235789] to-[#204162] font-bold text-xs text-white">
+                <div className="flex h-9 w-9 items-center justify-center bg-linear-to-br from-[#235789] to-[#204162] font-bold text-xs text-white">
                   {q.av}
                 </div>
                 <div>
@@ -1014,9 +1014,9 @@ function FinalCTA() {
     >
       <HexGrid />
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="h-[700px] w-[700px] rounded-full bg-[#235789]/20 blur-[160px]" />
+        <div className="h-175 w-175 rounded-full bg-[#235789]/20 blur-[160px]" />
       </div>
-      <div className="relative z-10 mx-auto max-w-[1400px] px-8 text-center">
+      <div className="relative z-10 mx-auto max-w-350 px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -1079,7 +1079,7 @@ function FinalCTA() {
 function Footer() {
   return (
     <footer className="bg-[#0d1318] border-t border-[#235789]/20">
-      <div className="mx-auto max-w-[1400px] px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="mx-auto max-w-350 px-8 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div className="flex items-center gap-3">
           <svg viewBox="0 0 36 36" fill="none" className="h-8 w-8">
             <polygon
