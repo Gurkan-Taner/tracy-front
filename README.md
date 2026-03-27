@@ -124,6 +124,9 @@ npm run lint
 ### Développement avec Docker
 
 ```bash
+# Lancer avec compose
+docker compose -f compose.yml up -d
+
 # Build l'image de dev
 docker build -f Dockerfile.dev -t tracy:dev .
 
